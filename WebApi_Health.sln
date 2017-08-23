@@ -9,7 +9,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DbOpertion", "DbOpertion\Db
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common", "Common\Common.csproj", "{171867EC-FB1D-45F7-98E2-BEA35DA87664}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AliyunHelper", "..\WebApi_Health\AliyunHelper\AliyunHelper.csproj", "{C64FA6E4-F74F-468A-9692-BBDA8F55DC29}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AliyunHelper", "AliyunHelper\AliyunHelper.csproj", "{C64FA6E4-F74F-468A-9692-BBDA8F55DC29}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

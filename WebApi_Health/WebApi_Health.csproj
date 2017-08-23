@@ -334,7 +334,7 @@
     <Folder Include="Views\Restaurant\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\WebApi_Health\AliyunHelper\AliyunHelper.csproj">
+    <ProjectReference Include="..\AliyunHelper\AliyunHelper.csproj">
       <Project>{c64fa6e4-f74f-468a-9692-bbda8f55dc29}</Project>
       <Name>AliyunHelper</Name>
     </ProjectReference>
