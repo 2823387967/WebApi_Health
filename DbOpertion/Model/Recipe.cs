@@ -2,6 +2,7 @@ using System;
 
 namespace DbOpertion.Models
 {
+    [Serializable]
     public class Recipe
     {
         /// <summary>
@@ -48,6 +49,10 @@ namespace DbOpertion.Models
         ///
         /// </summary>
         public DateTime? createTime { get; set; }
+        /// <summary>
+        ///
+        /// </summary>
+        public Boolean? IsDelete { get; set; }
         /// <summary>
         /// 获取对应主键
         /// </summary>

@@ -87,6 +87,7 @@
     <Compile Include="Config\ConfigManager.cs" />
     <Compile Include="Helper\FileHelper.cs" />
     <Compile Include="Helper\ImageUploadHelper.cs" />
+    <Compile Include="Helper\MemCacheHelper.cs" />
     <Compile Include="Helper\RandHelper.cs" />
     <Compile Include="Helper\JsonHelper.cs" />
     <Compile Include="Helper\Md5Helper.cs" />
@@ -98,11 +99,9 @@
     <Compile Include="SingleTon.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="app.config" />
     <None Include="Common.config" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

@@ -66,6 +66,7 @@
     <Compile Include="Model\Orders.cs" />
     <Compile Include="Model\Customer.cs" />
     <Compile Include="Model\Tag_Relation.cs" />
+    <Compile Include="Model\Withdraw.cs" />
     <Compile Include="Opertion2\ArticleOper.cs" />
     <Compile Include="Opertion2\CustomerLikeOper.cs" />
     <Compile Include="Opertion2\RecipeOper.cs" />

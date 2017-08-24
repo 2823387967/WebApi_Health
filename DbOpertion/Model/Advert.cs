@@ -2,6 +2,7 @@ using System;
 
 namespace DbOpertion.Models
 {
+    [Serializable]
     public class Advert
     {
         /// <summary>

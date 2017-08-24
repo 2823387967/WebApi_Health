@@ -2,6 +2,7 @@ using System;
 
 namespace DbOpertion.Models
 {
+    [Serializable]
     public class Seller
     {
         /// <summary>
@@ -32,6 +33,10 @@ namespace DbOpertion.Models
         ///
         /// </summary>
         public Decimal balance { get; set; }
+        /// <summary>
+        ///
+        /// </summary>
+        public Boolean? isDelete { get; set; }
         /// <summary>
         /// 获取对应主键
         /// </summary>
