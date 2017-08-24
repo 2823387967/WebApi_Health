@@ -347,10 +347,6 @@
       <Project>{ad80bfd2-dd51-4a1f-bf3e-0c197940c8df}</Project>
       <Name>DbOpertion</Name>
     </ProjectReference>
-    <ProjectReference Include="..\DotNet.Common.EnyimCache\DotNet.Common.EnyimCache.csproj">
-      <Project>{44808B35-4ABF-48BC-BFF7-987AC1C624F7}</Project>
-      <Name>DotNet.Common.EnyimCache</Name>
-    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

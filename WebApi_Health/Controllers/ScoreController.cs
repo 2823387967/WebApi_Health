@@ -12,7 +12,6 @@ using Common.Extend;
 using Common.Filter;
 using WebApi_Health.Models.Response;
 using Common.Helper;
-using DotNet.Common.EnyimCache;
 using DbOpertion.Models;
 
 namespace WebApi_Health.Controllers
@@ -74,21 +73,14 @@ namespace WebApi_Health.Controllers
         [WebApiException]
         public void BBB()
         {
-            ICacheWriterService writer = CacheBuilder.GetWriterService();//writer 使用memcached默认过期时间
+            var reader = MemCacheHelper.Instance.reader;
+            var writer = MemCacheHelper.Instance.writer;
             writer.TimeOut = 60;
-            ICacheReaderService reader = CacheBuilder.GetReaderService();//reader
             Score score = new Score();
             score.ScoreId = 666;
             writer.Add("score", score);
             var isExit = reader.isExists("score");
             var a = reader.Get<Score>("score");
-        }
-
-        [Serializable]
-        private class person
-        {
-            public int id { get; set; }
-            public string name { get; set; }
         }
     }
 }

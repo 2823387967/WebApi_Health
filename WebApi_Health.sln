@@ -11,8 +11,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common", "Common\Common.csp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AliyunHelper", "AliyunHelper\AliyunHelper.csproj", "{C64FA6E4-F74F-468A-9692-BBDA8F55DC29}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotNet.Common.EnyimCache", "DotNet.Common.EnyimCache\DotNet.Common.EnyimCache.csproj", "{44808B35-4ABF-48BC-BFF7-987AC1C624F7}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -35,10 +33,6 @@ Global
 		{C64FA6E4-F74F-468A-9692-BBDA8F55DC29}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C64FA6E4-F74F-468A-9692-BBDA8F55DC29}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C64FA6E4-F74F-468A-9692-BBDA8F55DC29}.Release|Any CPU.Build.0 = Release|Any CPU
-		{44808B35-4ABF-48BC-BFF7-987AC1C624F7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{44808B35-4ABF-48BC-BFF7-987AC1C624F7}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{44808B35-4ABF-48BC-BFF7-987AC1C624F7}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{44808B35-4ABF-48BC-BFF7-987AC1C624F7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

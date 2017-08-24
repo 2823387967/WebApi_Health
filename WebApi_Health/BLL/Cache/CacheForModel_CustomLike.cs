@@ -13,49 +13,32 @@ namespace WebApi_Health.BLL.Cache
         /// <summary>
         /// 获取用户喜欢列表
         /// </summary>
-        /// <param name="Key">键</param>
+        /// <param name="id">用户ID</param>
         /// <returns></returns>
         public List<CustomerLike> GetCustomLike(int id)
         {
-            var ListModel = CacheHelper.Instance.GetCache<List<CustomerLike>>("CustomerLike");
-            if (ListModel == null)
-            {
-                int outTime = CacheHelper.Instance.CacheOutTime;
-                CustomerLike model = new CustomerLike();
-                model.cid = id;
-                ListModel = CustomerLikeOper.Instance.Select(model);
-            }
-            else
-            {
-                ListModel = ListModel.Where(p => p.cid == id).ToList();
-            }
+            int outTime = CacheHelper.Instance.CacheOutTime;
+            CustomerLike model = new CustomerLike();
+            model.cid = id;
+            var ListModel = CustomerLikeOper.Instance.Select(model);
             return ListModel;
         }
 
         /// <summary>
         /// 获取用户喜欢餐厅
         /// </summary>
-        /// <param name="Key">键</param>
+        /// <param name="Userid">用户Id</param>
+        /// <param name="RestId">餐厅Id</param>
         /// <returns></returns>
         public CustomerLike GetCustomLikeRest(int Userid, int RestId)
         {
-            var ListModel = CacheHelper.Instance.GetCache<List<CustomerLike>>("CustomerLike");
-            CustomerLike customer_like_model = new CustomerLike();
-            if (ListModel == null)
-            {
-                int outTime = CacheHelper.Instance.CacheOutTime;
-                CustomerLike model = new CustomerLike();
-                model.cid = Userid;
-                model.lid = RestId;
-                model.type = UserLikeTypeVariable.RestLike;
-                ListModel = CustomerLikeOper.Instance.Select(model);
-                customer_like_model = ListModel.FirstOrDefault();
-            }
-            else
-            {
-                customer_like_model = ListModel.Where(p => p.cid == Userid && p.lid == RestId && p.type == UserLikeTypeVariable.RestLike).FirstOrDefault(); ;
-            }
-            return customer_like_model;
+            int outTime = CacheHelper.Instance.CacheOutTime;
+            CustomerLike model = new CustomerLike();
+            model.cid = Userid;
+            model.lid = RestId;
+            model.type = UserLikeTypeVariable.RestLike;
+            var Model = CustomerLikeOper.Instance.Select(model).FirstOrDefault();
+            return Model;
         }
 
         /// <summary>
@@ -65,48 +48,33 @@ namespace WebApi_Health.BLL.Cache
         /// <returns></returns>
         public List<CustomerLike> GetCustomLikeArticleList(int Userid)
         {
-            var ListModel = CacheHelper.Instance.GetCache<List<CustomerLike>>("CustomerLike");
-            List<CustomerLike> customer_like_model = new List<CustomerLike>();
-            if (ListModel == null)
-            {
-                int outTime = CacheHelper.Instance.CacheOutTime;
-                CustomerLike model = new CustomerLike();
-                model.cid = Userid;
-                model.type = UserLikeTypeVariable.ArticleLike;
-                ListModel = CustomerLikeOper.Instance.Select(model);
-                customer_like_model = ListModel;
-            }
-            else
-            {
-                customer_like_model = ListModel.Where(p => p.cid == Userid && p.type == UserLikeTypeVariable.ArticleLike).ToList();
-            }
-            return customer_like_model;
+            int outTime = CacheHelper.Instance.CacheOutTime;
+            CustomerLike model = new CustomerLike();
+            model.cid = Userid;
+            model.type = UserLikeTypeVariable.ArticleLike;
+            var ListModel = CustomerLikeOper.Instance.Select(model);
+            return ListModel;
         }
 
         /// <summary>
         /// 设置用户喜欢餐厅
         /// </summary>
-        /// <param name="Key">键</param>
+        /// <param name="Userid">用户Id</param>
+        /// <param name="RestId">餐厅Id</param>
         /// <returns></returns>
-        public CustomerLike InsertCustomLikeRest(int Userid, int RestId)
+        public bool InsertCustomLikeRest(int Userid, int RestId)
         {
-            var ListModel = CacheHelper.Instance.GetCache<List<CustomerLike>>("CustomerLike");
-            CustomerLike customer_like_model = new CustomerLike();
+            int outTime = CacheHelper.Instance.CacheOutTime;
+            CustomerLike model = new CustomerLike();
+            model.cid = Userid;
+            model.lid = RestId;
+            model.type = UserLikeTypeVariable.RestLike;
+            var ListModel = CustomerLikeOper.Instance.Select(model).FirstOrDefault();
             if (ListModel == null)
             {
-                int outTime = CacheHelper.Instance.CacheOutTime;
-                CustomerLike model = new CustomerLike();
-                model.cid = Userid;
-                model.lid = RestId;
-                model.type = UserLikeTypeVariable.RestLike;
-                ListModel = CustomerLikeOper.Instance.Select(model);
-                customer_like_model = ListModel.FirstOrDefault();
+                return CustomerLikeOper.Instance.Insert(model);
             }
-            else
-            {
-                customer_like_model = ListModel.Where(p => p.cid == Userid && p.lid == RestId && p.type == UserLikeTypeVariable.RestLike).FirstOrDefault(); ;
-            }
-            return customer_like_model;
+            return false;
         }
     }
 }

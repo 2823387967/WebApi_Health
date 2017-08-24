@@ -20,19 +20,20 @@ namespace WebApi_Health.BLL.Cache
         /// 页面大小
         /// </summary>
         private int PageSize = int.Parse(ConfigurationManager.AppSettings["PageSize"].ToString());
+
         /// <summary>
         /// 获取文章列表
         /// </summary>
         /// <returns></returns>
         public List<Article> GetArticleList()
         {
-            var ListModel = CacheHelper.Instance.GetCache<List<Article>>("ListArticle");
+            var ListModel = MemCacheHelper.Instance.reader.Get<List<Article>>("List_Article");
             if (ListModel == null)
             {
                 int outTime = CacheHelper.Instance.CacheOutTime;
                 Article model = new Article();
                 ListModel = ArticleOper.Instance.Select(model);
-                CacheHelper.Instance.SetCache("ListArticle", ListModel, outTime);
+                MemCacheHelper.Instance.writer.Modify("List_Article", ListModel);
             }
             return ListModel;
         }
@@ -43,7 +44,8 @@ namespace WebApi_Health.BLL.Cache
         /// <returns></returns>
         public List<Article> GetArticleListByPage(string OrderBy, int PageNo)
         {
-            var ListModel = CacheHelper.Instance.GetCache<List<Article>>("ListArticle");
+
+            var ListModel = GetArticleList();
             if (ListModel == null)
             {
                 Article model = new Article();
@@ -70,13 +72,12 @@ namespace WebApi_Health.BLL.Cache
         /// </summary>
         public List<Article> GetArticleListByName(string name)
         {
-            var ListModel = CacheHelper.Instance.GetCache<List<Article>>("ListArticle");
+            var ListModel = GetArticleList();
             if (ListModel == null)
             {
                 int outTime = CacheHelper.Instance.CacheOutTime;
                 Article model = new Article();
                 ListModel = ArticleOper.Instance.SelectVagueByArticleName(name);
-                CacheHelper.Instance.SetCache("ListArticle", ListModel, outTime);
             }
             return ListModel;
         }
@@ -87,7 +88,7 @@ namespace WebApi_Health.BLL.Cache
         /// <returns></returns>
         public Article GetArticleListById(int ArticleId)
         {
-            var ListModel = CacheHelper.Instance.GetCache<List<Article>>("ListArticle");
+            var ListModel = GetArticleList();
             if (ListModel == null)
             {
                 int outTime = CacheHelper.Instance.CacheOutTime;
@@ -108,7 +109,7 @@ namespace WebApi_Health.BLL.Cache
         /// <returns></returns>
         public Article ArticleCilckCount(int ArticleId)
         {
-            var ListModel = CacheHelper.Instance.GetCache<List<Article>>("ListArticle");
+            var ListModel = GetArticleList();
             Article model;
             if (ListModel == null)
             {
@@ -125,7 +126,7 @@ namespace WebApi_Health.BLL.Cache
                 model.cilckCount++;
                 if (ArticleOper.Instance.Update(model))
                 {
-                    CacheHelper.Instance.RemoveCache("ListArticle");
+                    MemCacheHelper.Instance.writer.Remove("List_Article");
                     GetArticleList();
                     return model;
                 }
@@ -146,7 +147,7 @@ namespace WebApi_Health.BLL.Cache
         /// <returns></returns>
         public Article ArticleLoveCount(int ArticleId, Enum_Opertion opertion)
         {
-            var ListModel = CacheHelper.Instance.GetCache<List<Article>>("ListArticle");
+            var ListModel = GetArticleList();
             Article model;
             if (ListModel == null)
             {
@@ -170,7 +171,7 @@ namespace WebApi_Health.BLL.Cache
                 }
                 if (ArticleOper.Instance.Update(model))
                 {
-                    CacheHelper.Instance.RemoveCache("ListArticle");
+                    MemCacheHelper.Instance.writer.Remove("List_Article");
                     GetArticleList();
                     return model;
                 }
